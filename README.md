@@ -24,3 +24,23 @@ Sinatra : A DSL for quickly creating web applications in Ruby with minimal effor
 
 Sinatra will provide the api to server all the information relative to location. Wax
 will handle put that information on the maps.
+
+# API
+
+## api/submit
+
+- Save in database.
+  * Latitude
+  * Longitude
+  * Titulo 
+  * Description 
+  * Issue Date 
+  * Category 
+  * Timestamp 
+  * id 
+
+## api/getpoint
+  * id
+
+## api/getpoint
+  * range of dates 
