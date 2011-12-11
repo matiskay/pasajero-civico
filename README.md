@@ -42,5 +42,5 @@ will handle put that information on the maps.
 ## api/getpoint
   * id
 
-## api/getpoint
+## api/getpoints
   * range of dates 
