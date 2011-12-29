@@ -1,0 +1,16 @@
+!!! 5 
+%html{:lang => "es"}
+  %head
+    %meta{:charset => "utf-8"}
+    %meta{:name => "viewport", :content => "width=device-width,initial-scale=1"}
+    %link{:rel => "shortcut icon", :href => "/favicon.ico"}
+
+    %title Pasajero Civico
+
+  %body
+    %h1 Pasajero Civico
+    %section{:id =>"main-content"}
+      =yield
+    %script{:src  => "javascripts/libs/modestmaps.min.js"}
+    %script{:src  => "javascripts/libs/libs/modestmaps.min.js"}
+    %script{:src  => "javascripts/app.js"}

@@ -1,0 +1,27 @@
+%form{:action => "/api/submit", :method => "post"}
+  %div{:class => "clearfix"}
+    %label{:for => "post_title"}
+      Titulo 
+    %div{:class => "input"}
+      %input{:type => "text", :class => "text", :id => "post_title", :name => "post[title]"}
+
+  %div{:class => "clearfix"}
+    %label{:for => "post_description"}
+      Description 
+    %div{:class => "textarea"}
+      %textarea{:id => "post_description", :name => "post[description]"}
+
+  %div{:class => "clearfix"}
+    %label{:for => "post_description"}
+      Description 
+    %div{:class => "select"}
+      %select{:id => "post_category", :name => "post[category]"}
+        %option{:value => '1'} Categoria #1
+        %option{:value => '2'} Categoria #2
+        %option{:value => '3'} Categoria #3
+        %option{:value => '4'} Categoria #4
+
+  %input{:type => "hidden", :name => "post[lat]"}
+  %input{:type => "hidden", :name => "post[lon]"}
+
+  %input{:type => 'submit'}
