@@ -2,12 +2,34 @@ require 'sinatra'
 require 'redis'
 require 'json'
 
+module Sinatra::Partials
+  def partial(template, *args)
+    template_array = template.to_s.split('/')
+    template = template_array[0..-2].join('/') + "/_#{template_array[-1]}"
+    options = args.last.is_a?(Hash) ? args.pop : {}
+    options.merge!(:layout => false)
+    locals = options[:locals] || {}
+    if collection = options.delete(:collection) then
+      collection.inject([]) do |buffer, member|
+        buffer << haml(:"#{template}", options.merge(:layout =>
+        false, :locals => {template_array[-1].to_sym => member}.merge(locals)))
+      end.join("\n")
+    else
+      haml(:"#{template}", options)
+    end
+  end
+end
+
+set :public_folder, File.dirname(__FILE__) + '/public'
+
 $redis = Redis.new(:db => 5)
 
 # set utf-8 for outgoing
 before do
   headers "Content-Type" => "text/html; charset=utf-8"
 end
+
+helpers Sinatra::Partials
 
 # helper
 def get_redis_json(id)
@@ -30,7 +52,7 @@ def get_redis_json(id)
 end
 
 get '/' do
-  haml :form, :format => :html5
+  haml :index, :format => :html5
 end
 
 get '/api/getpoint/:id' do
